@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import NavbarHeader from "../components/navbar-header";
-import "../styles/globals.css";
+import NavbarHeader from "@/components/navbar-header";
+import "@/styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
