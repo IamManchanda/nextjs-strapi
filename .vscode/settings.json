@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "node_modules/@ampproject/toolbox-core/lib/**/.cache": true,
+    "node_modules": true,
+    ".pnp": true,
+    "**/.pnp.js": true,
+    "coverage": true,
+    ".next/": false,
+    "out/": false,
+    "build": false,
+    "**/.DS_Store": true,
+    "**/*.pem": true,
+    "**/npm-debug.log*": false,
+    "**/yarn-debug.log*": false,
+    "**/yarn-error.log*": false,
+    "**/.env.local": false,
+    "**/.env.development.local": false,
+    "**/.env.test.local": false,
+    "**/.env.production.local": false,
+    "**/.vercel": true
+  }
+}
