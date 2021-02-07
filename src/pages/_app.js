@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
+import GlobalStyles from "@/components/global-styles";
 import NavbarHeader from "@/components/navbar-header";
-import "@/assets/styles/scss/globals.scss";
 
 const theme = {
   colors: {
@@ -11,6 +11,7 @@ const theme = {
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <NavbarHeader />
       <Component {...pageProps} />
     </ThemeProvider>
