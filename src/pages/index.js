@@ -2,7 +2,9 @@ function PageIndex({ movies }) {
   console.log({ movies });
   return (
     <div className="container">
-      <h1>This is our Front Page</h1>
+      {movies.map(({ title }, idx) => (
+        <div key={idx}>{title}</div>
+      ))}
     </div>
   );
 }
