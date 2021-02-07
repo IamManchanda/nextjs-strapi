@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 
-function NavbarHeader() {
+function NavbarHeader({ isDark }) {
   return (
-    <HeaderStyled>
+    <HeaderStyled isDark={isDark}>
       <div className="container">
         <div className="logo">
           <img src="/images/logo.svg" alt="Sites logo" />
@@ -15,7 +15,8 @@ function NavbarHeader() {
 }
 
 const HeaderStyled = styled.header`
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ isDark, theme }) =>
+    isDark ? "#000000" : theme.colors.primary};
   padding: 20px;
 
   .logo {
