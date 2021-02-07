@@ -4,7 +4,7 @@ import NavbarHeader from "@/components/navbar-header";
 
 const theme = {
   colors: {
-    primary: "#ff0000",
+    primary: "#efefef",
   },
 };
 
