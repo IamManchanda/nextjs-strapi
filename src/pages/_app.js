@@ -1,13 +1,19 @@
-import { Fragment } from "react";
+import { ThemeProvider } from "@emotion/react";
 import NavbarHeader from "@/components/navbar-header";
-import "@/styles/globals.css";
+import "@/assets/styles/scss/globals.scss";
+
+const theme = {
+  colors: {
+    primary: "#ff0000",
+  },
+};
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Fragment>
+    <ThemeProvider theme={theme}>
       <NavbarHeader />
       <Component {...pageProps} />
-    </Fragment>
+    </ThemeProvider>
   );
 }
 
