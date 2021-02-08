@@ -1,17 +1,18 @@
+import MovieCard from "@/components/movie-card";
+
 function PageIndex({ movies }) {
-  console.log({ movies });
   return (
     <div className="container">
-      {movies.map(({ title }, idx) => (
-        <div key={idx}>{title}</div>
+      {movies.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>
   );
 }
 
 export const getServerSideProps = async () => {
-  const { API_URL } = process.env;
-  const res = await fetch(`${API_URL}/movies`);
+  const { NEXT_PUBLIC_API_URL } = process.env;
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/movies`);
   const movies = await res.json();
 
   return {
