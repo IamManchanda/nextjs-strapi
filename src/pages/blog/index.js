@@ -1,5 +1,5 @@
-function PageContact() {
+function PageBlogList() {
   return "I am a Blog Post List.";
 }
 
-export default PageContact;
+export default PageBlogList;
