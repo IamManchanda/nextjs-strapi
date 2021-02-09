@@ -1,12 +1,23 @@
+import { Flex, Box } from "reflexbox";
 import MovieCard from "@/components/movie-card";
 
 function PageIndex({ movies }) {
   return (
-    <div className="container">
-      {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
+    <Box variant="container">
+      <Box my={40} as="h2">
+        Latest Movies
+      </Box>
+      <Flex
+        justifyContent="space-between"
+        flexDirection={{ _: "column", md: "row" }}
+      >
+        {movies.map((movie) => (
+          <Box key={movie.id} width={{ _: "100%", md: "30%" }}>
+            <MovieCard movie={movie} />
+          </Box>
+        ))}
+      </Flex>
+    </Box>
   );
 }
 

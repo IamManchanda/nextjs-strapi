@@ -1,12 +1,7 @@
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "emotion-theming";
 import GlobalStyles from "@/components/global-styles";
 import NavbarHeader from "@/components/navbar-header";
-
-const theme = {
-  colors: {
-    primary: "#efefef",
-  },
-};
+import theme from "@/theme";
 
 function MyApp({ Component, pageProps }) {
   return (
