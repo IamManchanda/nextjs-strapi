@@ -17,9 +17,8 @@ function MyApp({ Component, pageProps, navigation }) {
 const { publicRuntimeConfig } = getConfig();
 
 MyApp.getInitialProps = async () => {
-  const res = await fetch(
-    `${publicRuntimeConfig.NEXT_PUBLIC_API_URL}/navigations`,
-  );
+  const { NEXT_PUBLIC_API_URL } = publicRuntimeConfig;
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/navigations`);
   const navigation = await res.json();
   return { navigation };
 };
