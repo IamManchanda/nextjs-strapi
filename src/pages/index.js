@@ -10,6 +10,7 @@ function PageIndex({ movies }) {
       <Flex
         justifyContent="space-between"
         flexDirection={{ _: "column", md: "row" }}
+        mb={100}
       >
         {movies.map((movie) => (
           <Box key={movie.id} width={{ _: "100%", md: "30%" }}>

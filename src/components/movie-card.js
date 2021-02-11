@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 function MovieCard({ movie }) {
   const { NEXT_PUBLIC_API_URL } = process.env;
@@ -11,6 +12,9 @@ function MovieCard({ movie }) {
       <div className="body">
         <h3>{movie.title}</h3>
         <p dangerouslySetInnerHTML={{ __html: movie.description }} />
+        <Link href={`/movies/${movie.slug}`}>
+          <a>More about this movie</a>
+        </Link>
       </div>
     </CardStyled>
   );
@@ -34,6 +38,11 @@ const CardStyled = styled.div`
     p {
       color: #666666;
       line-height: 1.5;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px 0;
     }
   }
 `;
