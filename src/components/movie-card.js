@@ -12,7 +12,7 @@ function MovieCard({ movie }) {
       <div className="body">
         <h3>{movie.title}</h3>
         <p dangerouslySetInnerHTML={{ __html: movie.description }} />
-        <Link href={`/movies/${movie.slug}`}>
+        <Link href={`/movies/${movie.genre.slug}/${movie.slug}`}>
           <a>More about this movie</a>
         </Link>
       </div>
