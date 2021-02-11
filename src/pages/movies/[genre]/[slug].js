@@ -1,8 +1,6 @@
 import { Box } from "reflexbox";
 
 function PageMovieGenreSlug({ movie }) {
-  console.log({ movie });
-
   return (
     <Box variant="container">
       <Box as="h2" my={40}>
