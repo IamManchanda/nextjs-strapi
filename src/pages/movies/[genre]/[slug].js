@@ -1,15 +1,29 @@
 import { Box } from "reflexbox";
+import { NextSeo } from "next-seo";
+import { Fragment } from "react";
 
 function PageMovieGenreSlug({ movie }) {
+  const SEO = {
+    title: `Next Movies | ${movie.title}`,
+    description: movie.description,
+    openGraph: {
+      title: `Next Movies | ${movie.title}`,
+      description: movie.title,
+    },
+  };
+
   return (
-    <Box variant="container">
-      <Box as="h2" my={40}>
-        {movie.movie_title}
+    <Fragment>
+      <NextSeo {...SEO} />
+      <Box variant="container">
+        <Box as="h2" my={40}>
+          {movie.movie_title}
+        </Box>
+        <Box maxWidth={600}>
+          <p dangerouslySetInnerHTML={{ __html: movie.description }}></p>
+        </Box>
       </Box>
-      <Box maxWidth={600}>
-        <p dangerouslySetInnerHTML={{ __html: movie.description }}></p>
-      </Box>
-    </Box>
+    </Fragment>
   );
 }
 
