@@ -1,6 +1,6 @@
 export default {
   title: "Next Movies",
-  description: "Database of movies created with Next.js and Strapi",
+  description: "Next.js Strapi CMS Movies App",
   openGraph: {
     type: "website",
     locale: "en_IE",
