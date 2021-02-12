@@ -1,1 +1,1 @@
-# Next.js Frontend for Strapi CMS Backend
+# Next.js Strapi CMS Movies App
