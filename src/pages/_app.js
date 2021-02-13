@@ -6,6 +6,7 @@ import { DefaultSeo } from "next-seo";
 import getConfig from "next/config";
 import { Fragment } from "react";
 import SEO from "../../next-seo.config";
+import ContextWrapper from "@/components/context-wrapper";
 
 function MyApp({ Component, pageProps, navigation }) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps, navigation }) {
       <DefaultSeo {...SEO} />
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <NavbarHeader navigation={navigation} />
+        <ContextWrapper navigation={navigation}>
+          <NavbarHeader />
+        </ContextWrapper>
         <Component {...pageProps} />
       </ThemeProvider>
     </Fragment>

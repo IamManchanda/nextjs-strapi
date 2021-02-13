@@ -4,7 +4,7 @@ import { Flex, Box } from "reflexbox";
 import NavigationLinks from "@/components/navigation-links";
 import Link from "next/link";
 
-function NavbarHeader({ isDark, navigation }) {
+function NavbarHeader({ isDark }) {
   return (
     <HeaderStyled isDark={isDark}>
       <Box variant="container">
@@ -17,7 +17,7 @@ function NavbarHeader({ isDark, navigation }) {
               </a>
             </Link>
           </div>
-          <NavigationLinks navigation={navigation} />
+          <NavigationLinks />
         </Flex>
       </Box>
     </HeaderStyled>
