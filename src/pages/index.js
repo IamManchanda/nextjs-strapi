@@ -24,7 +24,7 @@ function PageIndex({ movies }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const { NEXT_PUBLIC_API_URL } = process.env;
   const movies = await fetcher(`${NEXT_PUBLIC_API_URL}/movies`);
 
@@ -32,6 +32,7 @@ export const getServerSideProps = async () => {
     props: {
       movies,
     },
+    revalidate: 3,
   };
 };
 
