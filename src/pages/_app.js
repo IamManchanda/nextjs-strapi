@@ -5,7 +5,7 @@ import fetcher from "@/utils/fetcher";
 import { ThemeProvider } from "emotion-theming";
 import { DefaultSeo } from "next-seo";
 import getConfig from "next/config";
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import useSWR from "swr";
 import SEO from "../../next-seo.config";
 import ContextWrapper from "@/components/context-wrapper";
@@ -27,13 +27,20 @@ function MyApp({ Component, pageProps }) {
     </Fragment>
   );
 
+  const [navigation, setNavigation] = useState([]);
+
   const { data, error } = useSWR(`${NEXT_PUBLIC_API_URL}/navigations`, fetcher);
-  let navigation;
-  if (error || !data) {
-    navigation = [];
-    return <MyAppMarkup />;
-  }
-  navigation = data;
+
+  useEffect(() => {
+    if (error) {
+      setNavigation([]);
+    } else if (data) {
+      setNavigation(data);
+    } else {
+      setNavigation([]);
+    }
+  }, [navigation, data, error]);
+
   return <MyAppMarkup />;
 }
 
