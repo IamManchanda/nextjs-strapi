@@ -3,6 +3,7 @@ import { rem } from "polished";
 import { Flex, Box } from "reflexbox";
 import NavigationLinks from "@/components/navigation-links";
 import Link from "next/link";
+import ToggleNavigationColorButton from "@/components/toggle-navigation-color-button";
 
 function NavbarHeader({ isDark }) {
   return (
@@ -18,6 +19,7 @@ function NavbarHeader({ isDark }) {
             </Link>
           </div>
           <NavigationLinks />
+          <ToggleNavigationColorButton />
         </Flex>
       </Box>
     </HeaderStyled>

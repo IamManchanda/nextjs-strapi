@@ -6,9 +6,9 @@ import HeaderContext from "@/contexts/header-context";
 
 function NavigationLinks() {
   const router = useRouter();
-  const { menuItems } = useContext(HeaderContext);
+  const { menuItems, color } = useContext(HeaderContext);
   return (
-    <NavigationStyled>
+    <NavigationStyled color={+color}>
       <ul>
         {menuItems.map((item) => (
           <li key={item.id}>
@@ -35,7 +35,7 @@ const NavigationStyled = styled.div`
     }
     a {
       text-decoration: none;
-      color: #4c9ee3;
+      color: ${({ color }) => (color ? "#4C9EE3" : "#000000")};
       &:hover {
         text-decoration: underline;
       }
