@@ -17,7 +17,7 @@ function PageMovieGenreSlug({ movie }) {
       <NextSeo {...SEO} />
       <Box variant="container">
         <Box as="h2" my={40}>
-          {movie.movie_title}
+          {movie.title}
         </Box>
         <Box maxWidth={600}>
           <p dangerouslySetInnerHTML={{ __html: movie.description }}></p>
