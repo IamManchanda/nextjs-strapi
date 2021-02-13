@@ -32,10 +32,10 @@ export const getServerSideProps = async (context) => {
 
   const { slug } = context.query;
   const res = await fetch(`${NEXT_PUBLIC_API_URL}/movies?slug=${slug}`);
-  const data = await res.json();
+  const movies = await res.json();
   return {
     props: {
-      movie: data[0],
+      movie: movies[0],
     },
   };
 };
