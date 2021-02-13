@@ -1,18 +1,34 @@
 import { Flex, Box } from "reflexbox";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import fetcher from "@/utils/fetcher";
 
 function PageMovies({ page, movies, moviesCount }) {
   const router = useRouter();
   const lastPage = Math.ceil(moviesCount / 3);
+
   return (
     <Box variant="container" pt={40}>
       <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <h3>{movie.title}</h3>
-          </li>
-        ))}
+        {movies.map((movie) => {
+          if (!movie.genre) {
+            movie.genre = {};
+            movie.genre.slug = "uncategorised";
+          }
+
+          return (
+            <li key={movie.id}>
+              <h3>
+                {movie.title} -{" "}
+                <Link href={`/movies/${movie.genre.slug}/${movie.slug}`}>
+                  <a>
+                    <small>View more...</small>
+                  </a>
+                </Link>
+              </h3>
+            </li>
+          );
+        })}
       </ul>
       <Flex mt={40} pl={20} justifyContent="space-between" maxWidth={300}>
         <button
