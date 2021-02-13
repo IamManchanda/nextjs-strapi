@@ -1,3 +1,4 @@
+import ContextWrapper from "@/components/context-wrapper";
 import GlobalStyles from "@/components/global-styles";
 import NavbarHeader from "@/components/navbar-header";
 import theme from "@/theme";
@@ -5,16 +6,12 @@ import fetcher from "@/utils/fetcher";
 import { ThemeProvider } from "emotion-theming";
 import { DefaultSeo } from "next-seo";
 import getConfig from "next/config";
-import { Fragment, useState, useEffect } from "react";
-import useSWR from "swr";
+import { Fragment } from "react";
+import { appWithTranslation } from "../../i18n";
 import SEO from "../../next-seo.config";
-import ContextWrapper from "@/components/context-wrapper";
 
-const { publicRuntimeConfig } = getConfig();
-const { NEXT_PUBLIC_API_URL } = publicRuntimeConfig;
-
-function MyApp({ Component, pageProps }) {
-  const MyAppMarkup = () => (
+function MyApp({ Component, pageProps, navigation }) {
+  return (
     <Fragment>
       <DefaultSeo {...SEO} />
       <ThemeProvider theme={theme}>
@@ -26,22 +23,25 @@ function MyApp({ Component, pageProps }) {
       </ThemeProvider>
     </Fragment>
   );
-
-  const [navigation, setNavigation] = useState([]);
-
-  const { data, error } = useSWR(`${NEXT_PUBLIC_API_URL}/navigations`, fetcher);
-
-  useEffect(() => {
-    if (error) {
-      setNavigation([]);
-    } else if (data) {
-      setNavigation(data);
-    } else {
-      setNavigation([]);
-    }
-  }, [navigation, data, error]);
-
-  return <MyAppMarkup />;
 }
 
-export default MyApp;
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  // TODO: https://github.com/isaachinman/next-i18next-vercel
+
+  const { publicRuntimeConfig } = getConfig();
+  const { NEXT_PUBLIC_API_URL } = publicRuntimeConfig;
+
+  let pageProps = {};
+  const navigation = await fetcher(`${NEXT_PUBLIC_API_URL}/navigations`);
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  return {
+    pageProps,
+    navigation,
+  };
+};
+
+export default appWithTranslation(MyApp);

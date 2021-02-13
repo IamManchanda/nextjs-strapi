@@ -10,15 +10,16 @@ function NavigationLinks() {
   return (
     <NavigationStyled color={+color}>
       <ul>
-        {menuItems.map((item) => (
-          <li key={item.id}>
-            <Link href={item.slug}>
-              <a className={router.pathname === item.slug ? "active" : ""}>
-                {item.title}
-              </a>
-            </Link>
-          </li>
-        ))}
+        {menuItems &&
+          menuItems.map((item) => (
+            <li key={item.id}>
+              <Link href={item.slug}>
+                <a className={router.pathname === item.slug ? "active" : ""}>
+                  {item.title}
+                </a>
+              </Link>
+            </li>
+          ))}
       </ul>
     </NavigationStyled>
   );

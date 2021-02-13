@@ -4,6 +4,7 @@ import { Flex, Box } from "reflexbox";
 import NavigationLinks from "@/components/navigation-links";
 import Link from "next/link";
 import ToggleNavigationColorButton from "@/components/toggle-navigation-color-button";
+import LanguageSwitcher from "@/components/language-switcher";
 
 function NavbarHeader({ isDark }) {
   return (
@@ -18,8 +19,12 @@ function NavbarHeader({ isDark }) {
               </a>
             </Link>
           </div>
-          <NavigationLinks />
-          <ToggleNavigationColorButton />
+          <div>
+            <NavigationLinks />
+            <br />
+            <ToggleNavigationColorButton />
+          </div>
+          <LanguageSwitcher />
         </Flex>
       </Box>
     </HeaderStyled>

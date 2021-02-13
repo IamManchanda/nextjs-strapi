@@ -1,12 +1,13 @@
 import { Flex, Box } from "reflexbox";
 import MovieCard from "@/components/movie-card";
 import fetcher from "@/utils/fetcher";
+import { withTranslation } from "../../i18n";
 
-function PageIndex({ movies }) {
+function PageIndex({ movies, t }) {
   return (
     <Box variant="container">
       <Box my={40} as="h2">
-        Latest Movies
+        {t("latest-movies")}
       </Box>
       <Flex
         justifyContent="space-between"
@@ -36,4 +37,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default PageIndex;
+export default withTranslation()(PageIndex);
