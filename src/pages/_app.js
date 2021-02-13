@@ -1,6 +1,7 @@
 import GlobalStyles from "@/components/global-styles";
 import NavbarHeader from "@/components/navbar-header";
 import theme from "@/theme";
+import fetcher from "@/utils/fetcher";
 import { ThemeProvider } from "emotion-theming";
 import { DefaultSeo } from "next-seo";
 import getConfig from "next/config";
@@ -11,8 +12,6 @@ import ContextWrapper from "@/components/context-wrapper";
 
 const { publicRuntimeConfig } = getConfig();
 const { NEXT_PUBLIC_API_URL } = publicRuntimeConfig;
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
 
 function MyApp({ Component, pageProps }) {
   const MyAppMarkup = () => (
