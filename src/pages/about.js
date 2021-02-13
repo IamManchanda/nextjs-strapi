@@ -2,13 +2,18 @@ import { NextSeo } from "next-seo";
 import { Fragment } from "react";
 import { Box } from "reflexbox";
 import fetcher from "@/utils/fetcher";
+import useSWR from "swr";
 
 function PageAbout({ page }) {
+  const { data: pageData } = useSWR("/api/posts", fetcher, {
+    initialData: page,
+  });
+
   const SEO = {
-    title: page.title,
+    title: pageData.title,
     description: "Just your normal about page",
     openGraph: {
-      title: page.title,
+      title: pageData.title,
       description: "Just your normal about page",
     },
   };
@@ -18,9 +23,9 @@ function PageAbout({ page }) {
       <NextSeo {...SEO} />
       <Box variant="container">
         <Box as="h2" my={40}>
-          {page.title}
+          {pageData.title}
         </Box>
-        <div dangerouslySetInnerHTML={{ __html: page.content }} />
+        <div dangerouslySetInnerHTML={{ __html: pageData.content }} />
       </Box>
     </Fragment>
   );
