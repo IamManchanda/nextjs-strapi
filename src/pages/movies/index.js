@@ -1,5 +1,6 @@
 import { Flex, Box } from "reflexbox";
 import { useRouter } from "next/router";
+import fetcher from "@/utils/fetcher";
 
 function PageMovies({ page, movies, moviesCount }) {
   const router = useRouter();
@@ -35,14 +36,10 @@ export const getServerSideProps = async ({ query: { page = 1 } }) => {
   const { NEXT_PUBLIC_API_URL } = process.env;
 
   const start = +page === 1 ? 0 : (+page - 1) * 3;
-
-  const resCount = await fetch(`${NEXT_PUBLIC_API_URL}/movies/count`);
-  const moviesCount = await resCount.json();
-
-  const res = await fetch(
+  const moviesCount = await fetcher(`${NEXT_PUBLIC_API_URL}/movies/count`);
+  const movies = await fetcher(
     `${NEXT_PUBLIC_API_URL}/movies?_limit=3&_start=${start}`,
   );
-  const movies = await res.json();
 
   return {
     props: {

@@ -1,6 +1,7 @@
 import { Box } from "reflexbox";
 import { NextSeo } from "next-seo";
 import { Fragment } from "react";
+import fetcher from "@/utils/fetcher";
 
 function PageMovieGenreSlug({ movie }) {
   const SEO = {
@@ -31,8 +32,8 @@ export const getServerSideProps = async (context) => {
   const { NEXT_PUBLIC_API_URL } = process.env;
 
   const { slug } = context.query;
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}/movies?slug=${slug}`);
-  const movies = await res.json();
+  const movies = await fetcher(`${NEXT_PUBLIC_API_URL}/movies?slug=${slug}`);
+
   return {
     props: {
       movie: movies[0],

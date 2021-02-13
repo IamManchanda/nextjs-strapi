@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import { Fragment } from "react";
 import { Box } from "reflexbox";
+import fetcher from "@/utils/fetcher";
 
 function PageAbout({ page }) {
   const SEO = {
@@ -27,8 +28,7 @@ function PageAbout({ page }) {
 
 export const getStaticProps = async () => {
   const { NEXT_PUBLIC_API_URL } = process.env;
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}/pages/1`);
-  const page = await res.json();
+  const page = await fetcher(`${NEXT_PUBLIC_API_URL}/pages/1`);
 
   return {
     props: {

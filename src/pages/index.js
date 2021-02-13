@@ -1,5 +1,6 @@
 import { Flex, Box } from "reflexbox";
 import MovieCard from "@/components/movie-card";
+import fetcher from "@/utils/fetcher";
 
 function PageIndex({ movies }) {
   return (
@@ -25,8 +26,7 @@ function PageIndex({ movies }) {
 
 export const getServerSideProps = async () => {
   const { NEXT_PUBLIC_API_URL } = process.env;
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}/movies`);
-  const movies = await res.json();
+  const movies = await fetcher(`${NEXT_PUBLIC_API_URL}/movies`);
 
   return {
     props: {
