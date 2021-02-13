@@ -34,6 +34,7 @@ export const getStaticProps = async () => {
     props: {
       page,
     },
+    revalidate: 5,
   };
 };
 
