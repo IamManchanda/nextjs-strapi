@@ -319,11 +319,23 @@ function GlobalStyles() {
             padding: 30px;
           }
 
+          p {
+            line-height: 24px;
+          }
+
           button {
             border: 1px solid #ccc;
             padding: 10px 25px;
             border-radius: 10px;
             min-width: 120px;
+          }
+
+          .article {
+            padding: 16px 0;
+          }
+
+          .article h3 {
+            margin-bottom: 8px;
           }
         `}
       />
