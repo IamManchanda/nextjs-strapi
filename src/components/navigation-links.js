@@ -12,8 +12,10 @@ function NavigationLinks() {
       <ul>
         {menuItems.map((item) => (
           <li key={item.id}>
-            <Link href={item.slug}>
-              <a className={router.pathname === item.slug ? "active" : ""}>
+            <Link href={`/${item.slug}`}>
+              <a
+                className={router.pathname === `/${item.slug}` ? "active" : ""}
+              >
                 {item.title}
               </a>
             </Link>
