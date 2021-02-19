@@ -18,8 +18,12 @@ function NavbarHeader({ isDark }) {
               </a>
             </Link>
           </div>
-          <NavigationLinks />
-          <ToggleNavigationColorButton />
+          <div className="hide-from-mobile">
+            <NavigationLinks />
+          </div>
+          <div className="hide-from-mobile-and-tablet">
+            <ToggleNavigationColorButton />
+          </div>
         </Flex>
       </Box>
     </HeaderStyled>

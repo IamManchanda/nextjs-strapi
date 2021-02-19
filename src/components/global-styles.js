@@ -337,6 +337,18 @@ function GlobalStyles() {
           .article h3 {
             margin-bottom: 8px;
           }
+
+          @media (max-width: 767px) {
+            .hide-from-mobile {
+              display: none;
+            }
+          }
+
+          @media (max-width: 992px) {
+            .hide-from-mobile-and-tablet {
+              display: none;
+            }
+          }
         `}
       />
     </Fragment>
