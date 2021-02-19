@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import Image from "next/image";
 
 function MovieCard({ movie }) {
   const { NEXT_PUBLIC_API_URL } = process.env;
@@ -13,7 +14,14 @@ function MovieCard({ movie }) {
     <CardStyled>
       {movie.poster && (
         <div className="poster">
-          <img src={`${NEXT_PUBLIC_API_URL}${movie.poster.url}`} alt="" />
+          <Image
+            src={`${NEXT_PUBLIC_API_URL}${movie.poster.url}`}
+            width={movie.poster.width}
+            height={movie.poster.height}
+            alt={movie.poster.alternativeText || movie.poster.name}
+            title={movie.poster.alternativeText || movie.poster.name}
+            layout="responsive"
+          />
         </div>
       )}
       <div className="body">
