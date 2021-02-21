@@ -9,6 +9,9 @@ import { Fragment, useState, useEffect } from "react";
 import useSWR from "swr";
 import SEO from "../../next-seo.config";
 import ContextWrapper from "@/components/context-wrapper";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
 
 const { publicRuntimeConfig } = getConfig();
 const { NEXT_PUBLIC_API_URL } = publicRuntimeConfig;
@@ -22,22 +25,18 @@ function MyApp({ Component, pageProps }) {
         <ContextWrapper navigation={navigation}>
           <NavbarHeader />
         </ContextWrapper>
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </ThemeProvider>
     </Fragment>
   );
 
   const [navigation, setNavigation] = useState([]);
-
   const { data, error } = useSWR(`${NEXT_PUBLIC_API_URL}/navigations`, fetcher);
-
   useEffect(() => {
-    if (error) {
-      setNavigation([]);
-    } else if (data) {
+    if (!error && data) {
       setNavigation(data);
-    } else {
-      setNavigation([]);
     }
   }, [navigation, data, error]);
 
