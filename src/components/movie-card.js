@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import Image from "next/image";
+import propTypes from "prop-types";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, year }) {
   const { NEXT_PUBLIC_API_URL } = process.env;
 
   if (!movie.genre) {
@@ -25,7 +26,9 @@ function MovieCard({ movie }) {
         </div>
       )}
       <div className="body">
-        <h3>{movie.title}</h3>
+        <h3>
+          {movie.title} - {year}
+        </h3>
         <p dangerouslySetInnerHTML={{ __html: movie.description }} />
         <Link href={`/movies/${movie.genre.slug}/${movie.slug}`}>
           <a>More about this movie</a>
@@ -61,5 +64,15 @@ const CardStyled = styled.div`
     }
   }
 `;
+
+MovieCard.propTypes = {
+  // movie: propTypes.oneOfType([propTypes.object, propTypes.array]),
+  movie: propTypes.object.isRequired,
+  year: propTypes.number,
+};
+
+MovieCard.defaultProps = {
+  year: 1984,
+};
 
 export default MovieCard;

@@ -1,6 +1,7 @@
 import { Flex, Box } from "reflexbox";
 import MovieCard from "@/components/movie-card";
 import fetcher from "@/utils/fetcher";
+import propTypes from "prop-types";
 
 function PageIndex({ movies }) {
   return (
@@ -23,6 +24,10 @@ function PageIndex({ movies }) {
     </Box>
   );
 }
+
+PageIndex.propTypes = {
+  movies: propTypes.array.isRequired,
+};
 
 export const getStaticProps = async () => {
   const { NEXT_PUBLIC_API_URL } = process.env;
