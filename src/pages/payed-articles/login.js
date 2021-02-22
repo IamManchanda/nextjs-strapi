@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { setCookie } from "nookies";
 import { useRouter } from "next/router";
 import fetcher from "@/utils/fetcher";
+import Link from "next/link";
 
 const { NEXT_PUBLIC_API_URL } = process.env;
 
@@ -57,9 +58,15 @@ function Login() {
               value={password}
             />
             <br />
-            <button type="button" onClick={handleLogin}>
+            <button type="submit" onClick={handleLogin}>
               Login
             </button>
+            <p className="or-register">
+              or,{" "}
+              <Link href="/payed-articles/register">
+                <a>Register</a>
+              </Link>
+            </p>
           </form>
         </Box>
       </LoginStyled>
@@ -73,6 +80,10 @@ const LoginStyled = styled.div`
     margin-bottom: 20px;
     border: 1px solid #cccccc;
     border-radius: 4px;
+  }
+
+  p.or-register {
+    padding: 10px 0;
   }
 `;
 
