@@ -60,7 +60,7 @@ function Login() {
               placeholder="Password"
             />
             <br />
-            <button type="submit" onClick={handleLogin}>
+            <button type="button" onClick={handleLogin}>
               Login
             </button>
             <p className="or-register">
