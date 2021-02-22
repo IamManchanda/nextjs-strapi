@@ -78,7 +78,7 @@ const PageFilterMovies = ({ movies, actors, genres }) => {
             />
           </Box>
           <Box>
-            {status === "loading" && <div>Loading your movies</div>}
+            {status === "loading" && <div>Loading your movies...</div>}
             {status === "error" && <div>Something went wrong</div>}
 
             {status === "success" &&
