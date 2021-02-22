@@ -50,12 +50,14 @@ function Login() {
               type="email"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
+              placeholder="Username"
             />
             <br />
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              placeholder="Password"
             />
             <br />
             <button type="submit" onClick={handleLogin}>
